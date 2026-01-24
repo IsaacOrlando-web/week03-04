@@ -1,0 +1,23 @@
+###Getting all books
+GET http://localhost:3000/books
+
+###Putting a new book
+
+POST http://localhost:3000/books HTTP/1.1
+Content-Type: application/json
+
+{
+    "title": "La naranja Mecanica",
+    "author": "Antony Burgess",
+    "isbn": "8726734",
+    "genre": [
+      "Thriller",
+      "Distopía",
+      "Critica Social"
+    ],
+    "publicationYear": 1962,
+    "publisher": "Editorial Sudamericana",
+    "pageCount": 471,
+    "description": "It is set in a near-future society that has a youth subculture of extreme violence. The teenage protagonist, Alex, narrates his violent exploits and his experiences with state authorities intent on reforming him.",
+    "averageRating": 4.5
+}
