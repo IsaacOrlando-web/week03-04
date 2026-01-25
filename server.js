@@ -4,8 +4,7 @@ import './loadenvironment.mjs';
 import db from './db/database.mjs';
 import router from './routes/index.mjs';
 
-
-
+//app express
 const app = express();
 const port = 3000;
 
