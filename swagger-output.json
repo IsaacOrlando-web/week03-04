@@ -5,11 +5,11 @@
     "description": "Description",
     "version": "1.0.0"
   },
-  "host": "https://week03-04.onrender.com",
+  "host": "week03-04.onrender.com",
   "basePath": "/",
   "schemes": [
-    "http",
-    "https"
+    "https",
+    "http"
   ],
   "paths": {
     "/": {

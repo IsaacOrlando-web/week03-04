@@ -6,8 +6,8 @@ const doc = {
         title: 'Library API',
         description: 'Description',
     },
-    host: 'https://week03-04.onrender.com',
-    schemes: ['http', 'https'],
+    host: 'week03-04.onrender.com',
+    schemes: ['https', 'http'],
 };
 
 const outputFile = './swagger-output.json';
