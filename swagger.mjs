@@ -6,7 +6,7 @@ const doc = {
         title: 'Library API',
         description: 'Description',
     },
-    host: 'https://week03-04.onrender.com/',
+    host: 'week03-04.onrender.com',
     schemes: ['http', 'https'],
 };
 
