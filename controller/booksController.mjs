@@ -3,10 +3,6 @@ import db from '../db/database.mjs';
 import { ObjectId } from 'mongodb';
 import swaggerAutogen from 'swagger-autogen';
 
-/**
- * GET /
- * Get all books
- */
 async function getAllBooks(req, res, next) {
     //#swagger.tags = ['Books']
     try {
@@ -22,45 +18,6 @@ async function getAllBooks(req, res, next) {
 // En la función addBook, actualizar el try-catch:
 async function addBook(req, res, next) {
     //#swagger.tags = ['Books']
-    //#swagger.security = [{"BearerAuth": []}]
-    //#swagger.summary = 'Add a new book'
-    //#swagger.description = 'Create a new book record in the database'
-    /* #swagger.requestBody = {
-        required: true,
-        content: {
-            "application/json": {
-                schema: { $ref: "#/definitions/BookInput" }
-            }
-        }
-    } */
-    /* #swagger.responses[201] = {
-        description: 'Book created successfully',
-        content: {
-            "application/json": {
-                schema: { $ref: "#/definitions/SuccessMessage" }
-            }
-        }
-    } */
-    /* #swagger.responses[400] = {
-        description: 'Invalid request data',
-        content: {
-            "application/json": {
-                schema: { $ref: "#/definitions/ValidationError" }
-            }
-        }
-    } */
-    /* #swagger.responses[401] = {
-        description: 'Unauthorized - missing or invalid token'
-    } */
-    /* #swagger.responses[500] = {
-        description: 'Internal server error',
-        content: {
-            "application/json": {
-                schema: { $ref: "#/definitions/Error" }
-            }
-        }
-    } */
-    
     try {
         const book = {
             title: req.body.title,
@@ -109,41 +66,6 @@ async function addBook(req, res, next) {
 // En la función updateBook:
 async function updateBook(req, res) {
     //#swagger.tags = ['Books']
-    //#swagger.security = [{"BearerAuth": []}]
-    //#swagger.summary = 'Update a book'
-    //#swagger.description = 'Updates an existing book by ID'
-    /* #swagger.parameters['id'] = {
-        in: 'path',
-        description: 'Book ID',
-        required: true,
-        type: 'string'
-    } */
-    /* #swagger.requestBody = {
-        required: true,
-        content: {
-            "application/json": {
-                schema: { $ref: "#/definitions/BookInput" }
-            }
-        }
-    } */
-    /* #swagger.responses[200] = {
-        description: 'Book updated successfully',
-        content: {
-            "application/json": {
-                schema: { $ref: "#/definitions/SuccessMessage" }
-            }
-        }
-    } */
-    /* #swagger.responses[400] = {
-        description: 'Invalid request data'
-    } */
-    /* #swagger.responses[404] = {
-        description: 'Book not found'
-    } */
-    /* #swagger.responses[500] = {
-        description: 'Internal server error'
-    } */
-    
     try {
         const bookId = new ObjectId(req.params.id);
         const updatedBook = {
@@ -180,30 +102,6 @@ async function updateBook(req, res) {
 // En la función deleteBook:
 async function deleteBook(req, res){
     //#swagger.tags = ['Books']
-    //#swagger.security = [{"BearerAuth": []}]
-    //#swagger.summary = 'Delete a book'
-    //#swagger.description = 'Deletes a book by ID'
-    /* #swagger.parameters['id'] = {
-        in: 'path',
-        description: 'Book ID',
-        required: true,
-        type: 'string'
-    } */
-    /* #swagger.responses[200] = {
-        description: 'Book deleted successfully',
-        content: {
-            "application/json": {
-                schema: { $ref: "#/definitions/SuccessMessage" }
-            }
-        }
-    } */
-    /* #swagger.responses[404] = {
-        description: 'Book not found'
-    } */
-    /* #swagger.responses[500] = {
-        description: 'Internal server error'
-    } */
-    
     try {
         const bookId = new ObjectId(req.params.id);
         const response = await db.collection('books').deleteOne({ _id: bookId });

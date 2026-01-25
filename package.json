@@ -10,7 +10,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "dev": "nodemon server.js",
-    "swagger": "node swagger-autogen.mjs",
+    "swagger": "node ./swagger.mjs",
     "swagger-dev": "node swagger-autogen.mjs --run-server",
     "generate-docs": "node swagger-autogen.mjs"
   },

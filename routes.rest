@@ -21,3 +21,38 @@ Content-Type: application/json
     "description": "It is set in a near-future society that has a youth subculture of extreme violence. The teenage protagonist, Alex, narrates his violent exploits and his experiences with state authorities intent on reforming him.",
     "averageRating": 4.5
 }
+
+###Deleting a Book
+DELETE http://localhost:3000/books/69721d66afe2808e39b79c1b
+
+
+
+###Get Reviews
+GET http://localhost:3000/reviews
+
+###Post Review
+POST http://localhost:3000/reviews HTTP/1.1
+Content-Type: application/json
+
+{
+  "userId": "607f1f77bcf86cd799439103",
+  "bookId": "507f1f77bcf86cd799439011",
+  "rating": "2",
+  "reviewText": "I think this books is beatiful, it touched my heart",
+  "datePosted": "09/12/2013"
+}
+
+###Update Review
+PUT http://localhost:3000/reviews/6975c748c349e54db09afdb6 HTTP/1.1
+Content-Type: application/json
+
+{
+  "userId": "607f1f77bcf86cd799439103",
+  "bookId": "507f1f77bcf86cd799439011",
+  "rating": "5",
+  "reviewText": "I think this books is beatiful, it touched my heart",
+  "datePosted": "09/12/2013"
+}
+
+###Delete Book by ID
+DELETE http://localhost:3000/reviews/6975c748c349e54db09afdb6
