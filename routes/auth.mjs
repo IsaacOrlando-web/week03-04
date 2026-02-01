@@ -4,11 +4,12 @@ import { Strategy as GoogleStrategy } from 'passport-google-oidc';
 import db from '../db/database.mjs';
 const authRouter = express.Router();
 
+
 // SOLO ESTA PARTE FUE ADAPTADA:
 passport.use(new GoogleStrategy({
   clientID: process.env['GOOGLE_CLIENT_ID'],
   clientSecret: process.env['GOOGLE_CLIENT_SECRET'],
-  callbackURL: '/oauth2/redirect/google',
+  callbackURL: 'https://week03-04.onrender.com/oauth2/redirect/google',
   scope: [ 'profile' ]
 }, async function verify(issuer, profile, cb) {
   try {
