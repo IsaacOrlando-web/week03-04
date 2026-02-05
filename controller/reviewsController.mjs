@@ -24,6 +24,22 @@ export async function addReview(req, res) {
             reviewText: req.body.reviewText,
             datePosted: req.body.datePosted || new Date().toISOString()
         };
+        
+        // Validación
+        if (!review.userId || !review.bookId || review.rating === undefined || !review.reviewText) {
+            return res.status(400).json({ 
+                error: 'Missing required fields',
+                details: 'Please provide userId, bookId, rating, and reviewText'
+            });
+        }
+        
+        if (typeof review.rating !== 'number' || review.rating < 1 || review.rating > 5) {
+            return res.status(400).json({ 
+                error: 'Invalid rating',
+                details: 'Rating must be a number between 1 and 5'
+            });
+        }
+        
         const response = await db.collection('reviews').insertOne(review);
         if (response.acknowledged) {
             res.status(201).json({ message: 'Review added successfully', insertedId: response.insertedId });
@@ -48,6 +64,22 @@ export async function updateReview(req, res) {
             reviewText: req.body.reviewText,
             datePosted: req.body.datePosted || new Date().toISOString()
         };
+        
+        // Validación
+        if (!updatedReview.userId || !updatedReview.bookId || updatedReview.rating === undefined || !updatedReview.reviewText) {
+            return res.status(400).json({ 
+                error: 'Missing required fields',
+                details: 'Please provide userId, bookId, rating, and reviewText'
+            });
+        }
+        
+        if (typeof updatedReview.rating !== 'number' || updatedReview.rating < 1 || updatedReview.rating > 5) {
+            return res.status(400).json({ 
+                error: 'Invalid rating',
+                details: 'Rating must be a number between 1 and 5'
+            });
+        }
+        
         const response = await db.collection('reviews').replaceOne({ _id: reviewId }, updatedReview);
         if (response.modifiedCount > 0) {
             res.status(200).json({ message: 'Review updated successfully' });

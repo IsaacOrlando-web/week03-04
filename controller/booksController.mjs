@@ -81,6 +81,14 @@ async function updateBook(req, res) {
             updatedAt: new Date()
         };
         
+        // Validación
+        if (!updatedBook.title || !updatedBook.author) {
+            return res.status(400).json({ 
+                error: 'Title and author are required',
+                details: 'Please provide both title and author fields'
+            });
+        }
+        
         const response = await db.collection('books').replaceOne({ _id: bookId}, updatedBook);
         if (response.modifiedCount > 0) {
             res.status(200).json({ 
